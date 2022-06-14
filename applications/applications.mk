@@ -47,6 +47,7 @@ APP_UPDATER = 1
 # Plugins
 APP_MUSIC_PLAYER = 1
 APP_SNAKE_GAME = 1
+APP_TEST_APP = 1
 
 # Debug
 APP_ACCESSOR = 1
@@ -247,6 +248,12 @@ SRV_GUI		= 1
 SRV_STORAGE = 1
 SRV_NOTIFICATION = 1
 SRV_INPUT   = 1
+endif
+
+APP_TEST_APP ?= 0
+ifeq ($(APP_TEST_APP), 1)
+CFLAGS      += -DAPP_TEST_APP
+SRV_GUI     = 1
 endif
 
 # Services

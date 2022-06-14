@@ -48,6 +48,7 @@ extern int32_t text_box_test_app(void* p);
 // Plugins
 extern int32_t music_player_app(void* p);
 extern int32_t snake_game_app(void* p);
+extern int32_t test_app(void* p);
 
 // On system start hooks declaration
 extern void bt_on_system_start();
@@ -55,7 +56,6 @@ extern void crypto_on_system_start();
 extern void ibutton_on_system_start();
 extern void infrared_on_system_start();
 extern void lfrfid_on_system_start();
-extern void music_player_on_system_start();
 extern void nfc_on_system_start();
 extern void storage_on_system_start();
 extern void subghz_on_system_start();
@@ -281,10 +281,6 @@ const FlipperOnStartHook FLIPPER_ON_SYSTEM_START[] = {
     infrared_on_system_start,
 #endif
 
-#ifdef APP_MUSIC_PLAYER
-    music_player_on_system_start,
-#endif
-
 #ifdef APP_NFC
     nfc_on_system_start,
 #endif
@@ -337,7 +333,7 @@ const FlipperApplication FLIPPER_PLUGINS[] = {
 #ifdef APP_MUSIC_PLAYER
     {.app = music_player_app,
      .name = "Music Player",
-     .stack_size = 2048,
+     .stack_size = 1024,
      .icon = &A_Plugins_14,
      .flags = FlipperApplicationFlagDefault},
 #endif
@@ -345,6 +341,14 @@ const FlipperApplication FLIPPER_PLUGINS[] = {
 #ifdef APP_SNAKE_GAME
     {.app = snake_game_app,
      .name = "Snake Game",
+     .stack_size = 1024,
+     .icon = &A_Plugins_14,
+     .flags = FlipperApplicationFlagDefault},
+#endif
+
+#ifdef APP_TEST_APP
+    {.app = test_app,
+     .name = "Test App",
      .stack_size = 1024,
      .icon = &A_Plugins_14,
      .flags = FlipperApplicationFlagDefault},
